@@ -1,6 +1,74 @@
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./others/modsec_white_bg.png">
+  <source media="(prefers-color-scheme: dark)" srcset="./others/modsecWindows build information can be found [here](build/win32/README.md).
+
+## Prerequisites
+
+Before installing ModSecurity, ensure you have the following prerequisites installed on your system:
+
+### Build Tools and Compilers
+
+* **C++ Compiler** - Supporting C++17 standards (GCC 7+, Clang 5+, or MSVC 2017+)
+* **C Extension/Runtime** - C standard library and runtime components
+* **Make** - Build automation tool
+* **Git** - For cloning repositories and managing submodules
+* **CMake** (optional) - Alternative build system for some platforms
+
+### Development Libraries and Headers
+
+* **Build-essential** (Linux) or **Xcode Command Line Tools** (macOS)
+* **pkg-config** - For managing library compile and link flags
+* **autotools** (autoconf, automake, libtool) - For the build system
+
+### Parser Generation Tools
+
+* **Flex** - Fast lexical analyzer generator
+* **Yacc** or **Bison** - Parser generator for the SecRules language
+
+### Platform-Specific Prerequisites
+
+#### Linux (Debian/Ubuntu)
+
+```bash
+sudo apt-get update
+sudo apt-get install build-essential autoconf automake libtool pkg-config
+sudo apt-get install flex bison git
+```
+
+#### Linux (CentOS/RHEL/Fedora)
+
+```bash
+sudo yum groupinstall "Development Tools"
+sudo yum install autoconf automake libtool pkg-config flex bison git
+# Or for newer versions:
+sudo dnf groupinstall "Development Tools"
+sudo dnf install autoconf automake libtool pkg-config flex bison git
+```
+
+#### macOS
+
+```bash
+# Install Xcode Command Line Tools
+xcode-select --install
+
+# Install Homebrew if not already installed
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install dependencies
+brew install autoconf automake libtool pkg-config flex bison git
+```
+
+#### Windows
+
+* **Visual Studio 2017** or later with C++ development tools
+* **Git for Windows**
+* **vcpkg** (recommended for dependency management)
+* See [Windows build documentation](build/win32/README.md) for detailed setup
+
+## Dependencies
+
+This library is written in C++ using the C++17 standards. It also uses Flex
+and Yacc to produce the "Sec Rules Language" parser. Other, mandatory dependencies include YAJL, as ModSecurity uses JSON for producing logs and its testing framework, libpcre (not yet mandatory) for processing regular expressions in SecRules, and libXML2 (not yet mandatory) which is used for parsing XML requests._bg.png">
   <source media="(prefers-color-scheme: light)" srcset="./others/modsec.png">
   <img src="./others/modsec.png" width="50%">
 </picture>
